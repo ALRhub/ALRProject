@@ -64,7 +64,8 @@ class ScalarsLogger(AbstractLogger):
         num_scalars = len(self._all_scalars)
 
         fig = make_subplots(rows=num_scalars, cols=1, shared_xaxes=True,
-                            subplot_titles=[key.title().replace("_", " ") for key in self._all_scalars.keys()])
+                            subplot_titles=[key.title().replace("_", " ")
+                                            for key in self._all_scalars.keys()])
         for position, (key, values) in enumerate(self._all_scalars.items()):
 
             fig.add_trace(
@@ -77,7 +78,8 @@ class ScalarsLogger(AbstractLogger):
 
         fig.update_layout(height=150*num_scalars, width=800, title_text="Scalars", showlegend=False)
         fig.write_image(os.path.join(self._recording_directory, self.processed_name+".pdf"))
-        # todo this does not work with plotly currently :/
+        # todo we currently freeze on this line when trying to exit via a keyboard interrupt for pycharm on windows.
+        #  this may be due to the plotly backend exiting prematurely or something similar.
         fig.data = []
         del fig
 

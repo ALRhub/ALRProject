@@ -1,5 +1,3 @@
-import torch
-
 from util.Types import *
 from recording.loggers.AbstractLogger import AbstractLogger
 from src.algorithms.AbstractIterativeAlgorithm import AbstractIterativeAlgorithm

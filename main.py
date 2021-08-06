@@ -57,5 +57,5 @@ class IterativeExperiment(experiment.AbstractIterativeExperiment):
 if __name__ == '__main__':
     from optuna_work.experiment_wrappers import wrap_iterative_experiment
 
-    cw = cluster_work.ClusterWork(wrap_iterative_experiment(IterativeExperiment))
+    cw = cluster_work.ClusterWork(wrap_iterative_experiment(IterativeExperiment, display_skip_warning=False))
     cw.run()

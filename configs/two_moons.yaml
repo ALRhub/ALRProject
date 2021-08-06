@@ -56,7 +56,7 @@ optuna_hps:  # we automatically switch to optuna experiments when "optuna_hps" i
 ---
 name: local_exp
 repetitions: 1
-iterations: 10
+iterations: 11
 params:
   recording:
     wandb: false

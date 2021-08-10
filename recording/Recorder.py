@@ -24,13 +24,13 @@ class Recorder:
         self._writer.info("Recording iteration {}".format(iteration))
         recorded_values = {}
         for logger in self._loggers:
-            #try:
+            try:
                 logger_values = logger.log_iteration(previous_recorded_values=recorded_values,
                                                      iteration=iteration)
                 if logger_values is not None:
                     recorded_values[logger.processed_name] = logger_values
-           # except Exception as e:
-            #    self._writer.error("Error with logger '{}': {}".format(logger.__class__.__name__, e))
+            except Exception as e:
+                self._writer.error("Error with logger '{}': {}".format(logger.__class__.__name__, e))
         self._writer.info("Finished recording iteration {}\n".format(iteration))
         scalars = recorded_values.get("scalars", {})
         return scalars

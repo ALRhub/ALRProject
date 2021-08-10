@@ -24,14 +24,17 @@ def register_loggers(config: ConfigDict,
     recording_dict = config.get("recording", {})
 
     from recording.loggers.ConfigLogger import ConfigLogger
+    from recording.loggers.NetworkSummaryLogger import NetworkSummaryLogger
     from recording.loggers.ScalarsLogger import ScalarsLogger
-    loggers = [ConfigLogger(config=config, algorithm=algorithm, task=task),
-               ScalarsLogger(config=config, algorithm=algorithm, task=task)]
+    logger_classes = [ConfigLogger,
+                      NetworkSummaryLogger,
+                      ScalarsLogger]
     if recording_dict.get("visualization", False):
         from recording.loggers.VisualizationLogger import VisualizationLogger
-        loggers.append(VisualizationLogger(config=config, algorithm=algorithm, task=task))
+        logger_classes.append(VisualizationLogger)
     if recording_dict.get("wandb", False):
         from recording.loggers.CustomWAndBLogger import CustomWAndBLogger
-        loggers.append(CustomWAndBLogger(config=config, algorithm=algorithm, task=task))
+        logger_classes.append(CustomWAndBLogger)
 
+    loggers = [logger(config=config, algorithm=algorithm, task=task) for logger in logger_classes]
     return loggers

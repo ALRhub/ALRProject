@@ -71,3 +71,7 @@ class BinaryClassifier(AbstractIterativeAlgorithm):
         loss.backward()
         self._optimizer.step()
         return loss.item()
+
+    @property
+    def network(self):
+        return self._network

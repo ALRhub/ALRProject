@@ -23,7 +23,14 @@ class CustomWAndBLogger(AbstractLogger):
         recording_dir = recording_structure.get("_recording_dir")
         job_name = recording_structure.get("_job_name")
 
+        tags = []
+        if get_from_nested_dict(config, list_of_keys=["algorithm", "name"], default_return=None) is not None:
+            tags.append(get_from_nested_dict(config, list_of_keys=["algorithm", "name"]))
+        if get_from_nested_dict(config, list_of_keys=["task", "task"], default_return=None) is not None:
+            tags.append(get_from_nested_dict(config, list_of_keys=["task", "task"]))
+
         self.wandb_logger = wandb.init(project=project_name,  # name of the whole project
+                                       tags=tags,  # tags to search the runs by. Currently contains task and algorithm
                                        job_type=job_name,  # name of your experiment
                                        group=groupname,  # group of identical hyperparameters for different seeds
                                        name=runname,  # individual repetitions

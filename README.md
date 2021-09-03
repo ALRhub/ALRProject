@@ -12,6 +12,12 @@ your runs.
 Lastly, there are some testing templates provided to allow you to write quick and efficient unit tests.
 
 # Getting Started
+## Copying the template
+Navigate to the main page of [this repository](https:github.com/ALRhub/ALRProject), 
+select "Use this template" in the menu bar and follow the instructions afterwards. For more
+information on how to create a repository from a template, see
+[here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-repository-from-a-template)
+
 ## Setting up the environment
 This project uses poetry (https://python-poetry.org/) and conda (https://docs.conda.io/en/latest/) for handling packages
 and dependencies.

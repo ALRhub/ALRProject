@@ -84,7 +84,7 @@ class ScalarsLogger(AbstractLogger):
     def _get_default_scalars(self):
         duration = self._get_duration()
         self._cumulative_duration += duration
-        default_scalars = {"duration": self._get_duration(),
+        default_scalars = {"duration": duration,
                            "cumulative_duration": self._cumulative_duration}
         if os.name == "posix":  # record memory usage per iteration. Only works on linux
             default_scalars["memory_usage"] = _get_memory_usage()

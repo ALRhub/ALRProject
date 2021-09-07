@@ -40,7 +40,6 @@ class BinaryClassifier(AbstractIterativeAlgorithm):
             loss = loss.item()
             accuracy = detach(sum(predictions[labels == 1] >= 0.5) + sum(predictions[labels == 0] < 0.5))
 
-        loss = loss / num_samples
         accuracy = accuracy / num_samples
 
         return {"accuracy": accuracy,

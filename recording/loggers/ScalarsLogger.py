@@ -63,7 +63,8 @@ class ScalarsLogger(AbstractLogger):
 
         fig = make_subplots(rows=num_scalars, cols=1, shared_xaxes=True,
                             subplot_titles=[key.title().replace("_", " ")
-                                            for key in self._all_scalars.keys()])
+                                            for key in self._all_scalars.keys()],
+                            x_title="Iteration")
         for position, (key, values) in enumerate(self._all_scalars.items()):
 
             fig.add_trace(

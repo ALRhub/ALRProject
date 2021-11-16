@@ -28,7 +28,7 @@ class IterativeExperiment(experiment.AbstractIterativeExperiment):
         # initialize random seeds
         numpy_seed = self._config.get("random_seeds").get("numpy")
         pytorch_seed = self._config.get("random_seeds").get("pytorch")
-        if numpy_seed:
+        if numpy_seed is not None:
             np.random.seed(seed=numpy_seed)
         if pytorch_seed is not None:
             torch.manual_seed(seed=pytorch_seed)
